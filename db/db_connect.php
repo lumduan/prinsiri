@@ -5,9 +5,9 @@ function connect()
   // เริ่มต้นส่วนกำหนดการเชิ่อมต่อฐานข้อมูล //    
      $db_config=array(  
         "host"=>"localhost",  // กำหนด host  
-        "user"=>"prinnmco_obec", // กำหนดชื่อ user  
-        "pass"=>"qazwsx",   // กำหนดรหัสผ่าน  
-        "dbname"=>"prinnmco_obec",  // กำหนดชื่อฐานข้อมูล  
+        "user"=>"root", // กำหนดชื่อ user  
+        "pass"=>"@Prinsiri200",   // กำหนดรหัสผ่าน  
+        "dbname"=>"prinsiri",  // กำหนดชื่อฐานข้อมูล  
         "charset"=>"utf8"  // กำหนด charset  
     );  
   // สิ้นสุุดส่วนกำหนดการเชิ่อมต่อฐานข้อมูล //    

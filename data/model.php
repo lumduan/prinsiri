@@ -934,32 +934,19 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);     
 $more_sql="";  
 if(isset($_GET['Id']) && $_GET['Id']!=""){ // รับค่า กรณี แสดงรายการเดียวที่เลือก ตาม Id  
-    $more_sql= " WHERE job_smis='".$_GET['Id']."' ";  //$more_sql=" AND uso_smis='".$_GET['Id']."' ";  
+    $more_sql= "";  //$more_sql=" AND uso_smis='".$_GET['Id']."' ";  
 }  
 // เนื้อหาส่วนล่างถัดจากนี้ เป็นการเรียกใช้งาน คำสั่ง php ดึงข้อมูล  
 // มาเก็บในตัวแปร array แล้วนำไปสร้างเป็นรูปแบบ json object   
 // เนื้อหาก่อนหน้ามีรายละเอียด ในที่นี้ไม่ขออธิบายเพิ่ม  
-$sql="SELECT * FROM job $more_sql";  
+$sql="SELECT * FROM MEMBER $more_sql";  
 $result = $mysqli->query($sql);  
 while($rs=$result->fetch_object()){  
     $json_data[]=array(  
         //
-        "job_id"=>$rs->job_id,      
-        "job_project"=>$rs->job_project,  
-        "job_type"=>$rs->job_type,  
-        "job_date_add"=>$rs->job_date_add, 
-        "job_update"=>$rs->job_update,   
-        "job_smis"=>$rs->job_smis,
-        "job_sch_name"=>$rs->job_sch_name,
-        "job_tea"=>$rs->job_tea,
-        "job_tea_tel"=>$rs->job_tea_tel,
-        "job_tea_mail"=>$rs->job_tea_mail,
-        "job_dea"=>$rs->job_dea,
-        "job_dea_tel"=>$rs->job_dea_tel,
-        "job_dea_mail"=>$rs->job_dea_mail,
-        "job_ser_id"=>$rs->job_ser_id,
-        "job_stat"=>$rs->job_stat,
-        "job_note"=>$rs->job_note,  
+        "M_ID"=>$rs->M_ID,      
+        "M_NAME"=>$rs->M_NAME,  
+       
         
       
        
@@ -982,7 +969,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);     
 $more_sql="";  
 if(isset($_GET['Id']) && $_GET['Id']!=""){ // รับค่า กรณี แสดงรายการเดียวที่เลือก ตาม Id  
-    $more_sql= " WHERE job_id='".$_GET['Id']."' ";  //$more_sql=" AND uso_smis='".$_GET['Id']."' ";  
+    $more_sql= " ";  //$more_sql=" AND uso_smis='".$_GET['Id']."' ";  
 }  
 // เนื้อหาส่วนล่างถัดจากนี้ เป็นการเรียกใช้งาน คำสั่ง php ดึงข้อมูล  
 // มาเก็บในตัวแปร array แล้วนำไปสร้างเป็นรูปแบบ json object   

@@ -13,7 +13,7 @@ app.controller("JobListCtrl", ["$scope", "$location", "mySch", "$interval",
         $scope.job = result; // เอาค่าข้อมูลที่ได้ กำหนดให้กับ ตัวแปร object  
       });
 
-      $scope.predicate = "-job_date_add"; // อันนี้กำหนดค่า สำหรับการเรียงข้อมูลเริ่มต้น 
+//       $scope.predicate = "-job_date_add"; // อันนี้กำหนดค่า สำหรับการเรียงข้อมูลเริ่มต้น 
     }
     /// Auto Update  
 
