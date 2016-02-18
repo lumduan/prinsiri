@@ -1,0 +1,458 @@
+<form role="form" name="UsoJobForm" ng-class="{ active:menu.setMainMenu(false) }">
+
+
+  <div class="control-group">
+
+    <!-- 1. --------------------------------------------------------------------------------------------->
+    <div class="panel panel-primary" ng-repeat="data in uso | limitTo:-1" ng-show="data.uso_smis == null">
+      <!-- ตัวแทนใส่รหัสก่อน -->
+      <div class="panel-heading">
+        <h4 class="panel-title">1. ใส่รหัส smis 8 หลักของโรงเรียน และกดค้นหา (โครงการ USO)</h4>
+      </div>
+      <br>
+      <p> &nbsp;&nbsp; หากไม่ทราบรหัส smis 8 หลักของโรงเรียน ให้เข้าไปค้นดูที่ <a href="http://data.bopp-obec.info/emis/index.php" target="_blank"> คลิ๊ก !! </a></P>
+
+      <table class="table">
+
+        <tr>
+
+
+          <td width="50%">
+            <input type="text" class="form-control" name="name" ng-model="temp_sims" placeholder="ใส่รหัส smis ของโรงเรียน 8 หลัก" required data-fv-notempty-message="The username is required" />
+          </td>
+          <td width="15%" class="text-left">
+            <a ng-href="#/uso_job/{{job}}/{{temp_sims}}" ng-show="temp_sims != null">
+              <button>ต่อไป</button>
+            </a>
+          </td>
+          <td width="15%"></td>
+          <td width="10%"></td>
+
+        </tr>
+      </table>
+      <br>
+
+    </div>
+    <!-- จบส่วนใส่รหัส 8 หลัก -->
+
+    <!---2...------------------------------------------------------------------------------------------>
+
+
+    <div class="panel panel-info" ng-repeat="data in uso | limitTo:-1" ng-show="data.uso_smis != null && data.show_uso != 'close'">
+      <!-- กรอกข้อมูลอุปกรณ์ -->
+      <div class="panel-heading">
+        <h4 class="panel-title">2. กรอกข้อมูลอุปกรณ์ ในโครงการให้ครบถ้วน </h4>
+      </div>
+
+      <br>
+      <!--     USO -->
+
+      <table>
+        <tr>
+          <td class="warning text-right">ครู้ผู้ดูแล : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_teacher">
+          </td>
+
+          <td class="warning text-right">&nbsp;&nbsp;เบอร์โทร :</td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_tea_mobile">
+          </td>
+
+          <td class="warning text-right"></td>
+          <td hidden ng-controller="displayCtrl as toDay">
+            <p hidden>{{data.uso_update = toDay.toDay | date:'dd-MM-yyyy เวลา HH:mm'}}</p>
+            <input type="text" class="form-control" ng-model="data.uso_update">
+          </td>
+
+
+        </tr>
+      </table>
+      <br>
+      <table class="table">
+        <tr class="active">
+          <th width="15%">รายการ</th>
+          <th width="20%">หมายเลขเครื่อง</th>
+          <th width="15%">หมายเลขจอ</th>
+          <th width="50%">หมายเหตุ</th>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">Server IBM X3400 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_server">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_server_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_server_stat">
+          </td>
+        </tr>
+        <!--// เครื่องครู -->
+        <tr>
+          <td class="warning text-right">PC ครู : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc0">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc0_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc0_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 1 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc1">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc1_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc1_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 2 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc2">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc2_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc2_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 3 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc3">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc3_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc3_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 4 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc4">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc4_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc4_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 5 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc5">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc5_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc5_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 6 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc6">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc6_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc6_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 7 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc7">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc7_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc7_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 8 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc8">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc8_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc8_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 9 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc9">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc9_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc9_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">PC 10 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc10">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc10_mo">
+          </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_pc10_stat">
+          </td>
+        </tr>
+        <!--// UPS -->
+        <tr>
+          <td class="warning text-right">UPS Ultra 1000VA : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_ups1">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_ups1_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">UPS Ultra 600VA : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_ups6">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_ups6_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">Printer : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_printer">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_printer_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">Projector พร้อมจอรับภาพ: </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_projector">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_projector_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">เครื่องเล่น DVD : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_dvd">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_dvd_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">จอ LCD TV 32นิ้ว : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_lcd">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_lcd_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">เครื่องรับสัญญาณดาวเทียม : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_rev">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_rev_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">เครื่องปรับอากาศ 1 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_air1">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_air1_stat">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="warning text-right">เครื่องปรับอากาศ 2 : </td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_air2">
+          </td>
+          <td></td>
+          <td>
+            <input type="text" class="form-control" name="name" ng-model="data.uso_air2_stat">
+          </td>
+        </tr>
+      </table>
+
+      <div>
+       <br>
+        <a ng-href="#/uso_job/{{job}}/{{data.uso_smis}}">
+          <button ng-click="submitUso(data); data.show_uso = 'close'" class="btn btn-primary">ต่อไป</button>
+        </a>
+        <!-- <button ng-show="data.id" class="btn btn-danger" ng-click="deleteData(data.id)">Delete</button>  // ng-disabled="myUsoForm.$invalid" -->
+      </div>
+     
+
+    </div>
+    <!-- จบส่วนกรอกข้อมูลอุปกรณ์ -->
+
+
+    <!--------------------------------------------------------------------------------------------->
+
+    <!-- 3.. --------------------------------------------------------------------------------------------->
+
+    <div class="panel panel-success" ng-repeat="data in uso | limitTo:-1" ng-show="data.show_uso == 'close'">
+      <!-- กรอกข้อมูลโรงเรียน -->
+      <div class="panel-heading">
+        <h4 class="panel-title">3. กรอกข้อมูลโรงเรียน และผู้ติดต่อให้ครบถ้วน ทุกช่อง !</h4>
+      </div>
+
+
+      <table class="table" ng-repeat="data in uso | limitTo:-1">
+<!--
+        <tr>
+          <td colspan="7">
+            <h4>โรงเรียน {{data.ap_sch}} </h4></td>
+
+        </tr>
+
+
+        <tr>
+          <td class="text-right" width="10%">ครูผู้รับผิดชอบ :</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.ap_teacher">
+          </td>
+          <td class="text-right" width="10%">เบอร์มือถือ ครู :</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.ap_tel1">
+          </td>
+          <td class="text-right" width="10%">e-mail ครู :</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.ap_tea_mail">
+          </td>
+          <td class="text-center" width="10%"></td>
+        </tr>
+        <tr ng-show="data.ap_teacher != '' && data.ap_tea_tel1 != '' && data.ap_tea_mail != '' && showDealer != true">
+          <td colspan="7" class="text-center">
+            <button ng-click="showDealer = true ; submitmyApMaForm(data)">ต่อไป</button>
+          </td>
+        </tr> -->
+
+
+        <tr ng-show="data.show_uso == 'close'">
+          <td class="text-right" width="10%">ชื่อ ตัวแทน : {{SaveAndAddClick}}</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.job_dea">
+          </td>
+          <td class="text-right" width="10%">เบอร์มือถือ ตัวแทน :</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.job_dea_tel">
+          </td>
+          <td class="text-right" width="10%">e-mail ตัวแทน :</td>
+          <td width="20%">
+            <input type="text" class="form-control" name="name" ng-model="data.job_dea_mail">
+          </td>
+          <td width="10%"></td>
+        </tr>
+        <tr>
+          <td colspan="7" class="text-center">หมายเหตุ ปัญหา / การแก้ไข
+            <input type="text" class="form-control" name="name" ng-model="data.job_note">
+          </td>
+
+        </tr>
+
+        <!-- ส่วนของการกำหนดค่า Job ที่ไม่มีให้กรอกในฟอร์ม -->
+        <p hidden ng-controller="displayCtrl as toDay">{{data.job_project = "USO"}} {{data.job_type = job}} {{data.job_smis = data.uso_smis}} 
+          {{data.job_sch_name = data.uso_sch}} {{data.job_tea = data.uso_teacher}} {{data.job_tea_tel = data.uso_tea_mobile}} 
+          {{data.job_tea_mail = data.uso_tea_mail}} {{data.job_stat = "สำเร็จ"}}
+        </p>
+        <h1>{{data.sch_name}}</h1>
+        <tr ng-show="data.job_dea != '' && data.job_dea != null &&
+                  data.job_dea_tel != '' && data.job_dea_tel != null &&
+                  data.job_dea_mail != '' && data.job_dea_mail != null
+                  ">
+          <!--                   <td colspan="7" class="text-center"><a href="http://google.com"><i class="glyphicon glyphicon-plus" ng-click="addJobForm(data)"></i></a></td> -->
+          <td colspan="7" class="text-center">
+            <a href="http://google.com">
+              <button onclick="location.href='http://google.com';" ng-click="addJobForm(data)">บันทึก</button>
+            </a>
+          </td>
+
+        </tr>
+
+      </table>
+
+
+    </div>
+    <!-- จบส่วนกรอกข้อมูลโรงเรียน -->
+
+
+
+
+
+
+
+    <!--// แสดงรายละเอียดอุปกรณืทั้งหมด -->
+
+
+
+  </div>
+
+
+  <div hidden>
+    <a href="http://www.techno.bopp.go.th/tech/front.php"><h4 class="text-center">บันทึกข้อมูล ไปยังหน้า Techno</h4></a>
+    <!-- <a ng-href="{{'#/uso_view/'}}{{data.uso_smis}}" class="btn btn-default">Back</a>   -->
+    <!-- <a href ="http://www.techno.bopp.go.th/tech/front.php"> <button class="btn btn-default">Save</button> </a> -->
+    <!-- <button ng-show="data.id" class="btn btn-danger" ng-click="deleteData(data.id)">Delete</button>  // ng-disabled="myUsoForm.$invalid" -->
+  </div>
+
+</form>

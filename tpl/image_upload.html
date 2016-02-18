@@ -1,0 +1,50 @@
+<div ng-class="{ active:menu.setMainMenu(false) }">
+
+</div>
+
+<div class="control-group">
+
+  <!-- 1. --------------------------------------------------------------------------------------------->
+  <div class="panel panel-primary" ng-controller="MyFile" ng-repeat="data in de | limitTo:-1">
+
+    <div class="panel-heading">
+      <h4 class="panel-title">Upload รูปถ่าย</h4>
+    </div>
+    <br>
+    <p ng-show="theFile == null"> &nbsp;&nbsp; 1. เลือกไฟล์ภาพจากเครื่อง </P>
+    <p ng-show="theFile != null"> &nbsp;&nbsp; 2. กดปุ่ม UPLOAD </P>
+
+    <form name="form3" enctype="multipart/form-data" method="post" action="../images/upload.php">
+      <table class="table">
+
+        <tr>
+
+
+          <td width="50%">
+            <input type="file" name="my_field" value="" accept="image/*" id='files' ng-model="temp_" onchange="angular.element(this).scope().setFile(this)" ng-show="theFile == null">
+            <input type="hidden" name="action" value="simple">
+            <input type="hidden" name="file_path" value="pics/{{data.de_smis}}/{{data.de_project}}/{{data.de_type}}/{{data.de_sn}}">
+            <P hidden>{{data.de_pic = 'images/pics/' + data.de_smis +'/'+ data.de_project +'/'+ data.de_type +'/'+ data.de_sn +'/'+ theFile.name}}
+              <!--                IMG DB -->
+              {{data.img_type = imgType}} {{data.img_de_sn = data.de_sn}} {{data.img_path = data.de_pic}} {{data.img_smis = data.de_smis}}
+
+            </P>
+            <input type="submit" name="Submit" value="UPLOAD" ng-show="theFile != null" ng-click="submitmyImage(data)">
+          </td>
+          <td width="15%" class="text-left">
+
+          </td>
+          <td width="15%"></td>
+          <!--           <a href="javascript:window.history.go(-2)">GO back // {{theFile.name}}</a> -->
+          <td width="10%"></td>
+
+        </tr>
+      </table>
+    </form>
+
+    <!--   เอาไว้ทดสอบ path -->
+    <!--       <p> {{data.de_pic}} </p> -->
+    <!--   <p>{{data.de_smis}}/{{data.de_project}}/{{data.de_type}}/{{data.de_sn}}/{{theFile.name}}</p> -->
+
+
+  </div>

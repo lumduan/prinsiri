@@ -1,0 +1,228 @@
+                
+<form role="form" name="ecrJobForm" ng-class="{ active:menu.setMainMenu(false) }"> 
+                
+  
+  <div class="control-group"> 
+      
+  <!-- 1. --------------------------------------------------------------------------------------------->  
+      <div class = "panel panel-primary" ng-repeat="data in ecr | limitTo:-1" ng-show="data.ecr_smis == null">   <!-- ตัวแทนใส่รหัสก่อน -->
+          <div class = "panel-heading">
+            <h4 class = "panel-title">1. ใส่รหัส smis 8 หลักของโรงเรียน และกดค้นหา (โครงการ E-Classroom)</h4>
+          </div>
+          <br>
+          <p> &nbsp;&nbsp; หากไม่ทราบรหัส smis 8 หลักของโรงเรียน ให้เข้าไปค้นดูที่ <a href="http://data.bopp-obec.info/emis/index.php" target="_blank"> คลิ๊ก !! </a></P>
+                     
+          <table class="table">  
+                   
+              <tr>
+                  
+                 
+                  <td width="50%"><input type="text" class="form-control" name="name" ng-model="temp_sims" 
+                                         placeholder="ใส่รหัส smis ของโรงเรียน 8 หลัก"
+                                         required
+                                         data-fv-notempty-message="The username is required"/></td>
+                  <td width="15%" class="text-left" ><a ng-href ="#/ecr_job/{{job}}/{{temp_sims}}" ng-show="temp_sims != null"> <button>ต่อไป</button> </a></td>
+                  <td width="15%"></td>
+                  <td width="10%"></td>          
+   
+              </tr>
+          </table> 
+          <br>
+          
+       </div> <!-- จบส่วนใส่รหัส 8 หลัก -->
+       
+           <!---2...------------------------------------------------------------------------------------------>  
+     
+      
+           <div class = "panel panel-info" ng-repeat="data in ecr | limitTo:-1" ng-show="data.ecr_smis != null  && data.show_ecr != 'close'">   <!-- กรอกข้อมูลอุปกรณ์ -->
+          <div class = "panel-heading">
+            <h4 class = "panel-title">2. กรอกข้อมูลอุปกรณ์ ในโครงการให้ครบถ้วน </h4>
+          </div>
+        
+<!--      E-Classroom -->
+             
+             <table class="table">  
+                    
+                 <tr>
+                  <td class="text-right" width="10%">ครูผู้รับผิดชอบ :</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.ecr_teacher"></td>
+                  <td class="text-right" width="10%">เบอร์มือถือ ครู :</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.ecr_tea_mobile"></td>
+                  <td class="text-right" width="10%">e-mail ครู :</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.ecr_tea_mail"></td>
+                  <td class="text-center" width="10%"></td>
+              </tr>
+             </table>
+              
+         
+            <table class="table">  
+                <tr class="active">  
+                    <th width="15%">รายการ อุปกรณ์</th>
+                    <th width="25%">สถานะ</th>  
+                    <th width="25%">อาการ</th>  
+                    <th width="25%">การแก้ปัญหา</th>  
+                </tr>  
+                
+                <tr>
+                    <td class="active text-right">Cisco Codec</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_codec_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_codec_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_codec_solve"></td>
+                </tr>
+
+                <tr>
+                    <td class="active text-right">Cisco DMP 4350g</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_dmp_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_dmp_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_dmp_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">Cisco Edge 300</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_edge_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_edge_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_edge_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">Cisco Switch 2960</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_sw_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_sw_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_sw_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">Activ Board</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_board_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_board_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_board_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">Visualizer</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_vis_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_vis_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_vis_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">TV LED 1</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv1_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv1_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv1_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">TV LED 2</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv2_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv2_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_tv2_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">Printer</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_printer_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_printer_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_printer_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">โต๊ะครู</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_table_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_table_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_table_solve"></td>
+                </tr>
+                
+                <tr>
+                    <td class="active text-right">สายสัญญาณ</td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_compo_stat"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_compo_note"></td>
+                    <td><input type="text" class="form-control" name="name" ng-model="data.ecr_compo_solve"></td>
+                </tr>
+            </table> 
+             
+             
+           <div>
+       <br>
+        <a ng-href="#/ecr_job/{{job}}/{{data.ecr_smis}}">
+          <button ng-click="submitEcr(data); data.show_ecr = 'close'" class="btn btn-primary">ต่อไป</button>
+        </a>
+        <!-- <button ng-show="data.id" class="btn btn-danger" ng-click="deleteData(data.id)">Delete</button>  // ng-disabled="myUsoForm.$invalid" -->
+      </div>
+
+       </div> <!-- จบส่วนกรอกข้อมูลอุปกรณ์ -->
+      
+       
+       <!--------------------------------------------------------------------------------------------->  
+       
+     <!-- 3.. ส่วนกรอกข้อมูลตัวแทน--------------------------------------------------------------------------------------------->  
+       
+        <div class = "panel panel-success" ng-repeat="data in ecr | limitTo:-1" ng-show="data.show_ecr == 'close'" >   <!-- กรอกข้อมูลโรงเรียน -->
+          <div class = "panel-heading">
+            <h4 class = "panel-title">3. กรอกข้อมูลโรงเรียน และผู้ติดต่อให้ครบถ้วน ทุกช่อง ! </h4>
+          </div>
+          <table class="table" ng-repeat="data in ecr | limitTo:-1">       
+              <tr>
+                  <td colspan="7"><h4>โรงเรียน {{data.ecr_sch}} </h4></td>
+                  
+              </tr>
+                 
+           
+              <tr >
+                  <td class="text-right" width="10%">ชื่อ ตัวแทน : {{SaveAndAddClick}}</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.job_dea"></td>
+                  <td class="text-right" width="10%">เบอร์มือถือ ตัวแทน :</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.job_dea_tel"></td>
+                  <td class="text-right" width="10%">e-mail ตัวแทน :</td>
+                  <td width="20%"><input type="text" class="form-control" name="name" ng-model="data.job_dea_mail"></td>
+                  <td width="10%"></td>
+              </tr>
+              <tr >
+                  <td colspan="7" class="text-center">หมายเหตุ ปัญหา / การแก้ไข<input type="text" class="form-control" name="name" ng-model="data.job_note"></td>
+                  
+              </tr> 
+              <!-- ส่วนของการกำหนดค่า Job ที่ไม่มีให้กรอกในฟอร์ม -->
+              <p hidden ng-controller="displayCtrl as toDay">{{data.job_project = "e-Class"}} {{data.job_type = job}} 
+                  {{data.job_smis = data.ecr_smis}} {{data.job_sch_name = data.ecr_sch}} 
+                  {{data.job_tea = data.ecr_teacher}} {{data.job_tea_tel = data.ecr_tea_mobile}} {{data.job_tea_mail = data.ecr_tea_mail}}
+                  {{data.job_stat = "สำเร็จ"}}    </p>
+                
+<!--                 {{data.job_date_add = toDay.toDay  | date:'yyyyMMddTHHmmssZZ'}} -->    
+              <h1>{{data.sch_name}}</h1>
+              <tr ng-show = "data.job_dea != '' && data.job_dea != null &&
+                  data.job_dea_tel != '' && data.job_dea_tel != null &&
+                  data.job_dea_mail != '' && data.job_dea_mail != null
+                  ">
+<!--                   <td colspan="7" class="text-center"><a href="http://google.com"><i class="glyphicon glyphicon-plus" ng-click="addJobForm(data)"></i></a></td> -->
+                <td colspan="7" class="text-center"><a href="http://google.com"><button onclick="location.href='http://google.com';" ng-click="addJobForm(data)">บันทึก</button></a></td>
+                  
+              </tr>
+             
+             
+          </table>
+            
+
+       </div> <!-- จบส่วนกรอกข้อมูลโรงเรียน -->
+      
+       
+   
+     
+      
+      
+
+        <!--// แสดงรายละเอียดอุปกรณืทั้งหมด -->
+         
+       
+    
+  </div>
+ 
+
+  <div hidden>
+      <a href ="http://www.techno.bopp.go.th/tech/front.php"><h4 class="text-center">บันทึกข้อมูล ไปยังหน้า Techno</h4></a>
+        <!-- <a ng-href="{{'#/uso_view/'}}{{data.uso_smis}}" class="btn btn-default">Back</a>   -->
+       <!-- <a href ="http://www.techno.bopp.go.th/tech/front.php"> <button class="btn btn-default">Save</button> </a> -->
+       <!-- <button ng-show="data.id" class="btn btn-danger" ng-click="deleteData(data.id)">Delete</button>  // ng-disabled="myUsoForm.$invalid" -->
+  </div>
+ 
+</form>  
+

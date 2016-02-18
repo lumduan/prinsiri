@@ -1,0 +1,145 @@
+<form role="form" name="ApForm" ng-class="{ active:menu.HeaderText = 'Add AP.', active:menu.setMainMenuActive('apAdd') } ">
+
+  <div class="control-group">
+    <div class="panel panel-primary" id="leftcol">
+      <div class="panel-heading">กรอกข้อมูลเกี่ยวกับอุปกรณ์</div>
+      <div class="panel-body">
+        <table class="spaceEx">
+
+          <tr>
+
+            <td hidden>
+              <p hidden>{{data.de_project = "AP"}}</p>
+              <input type="text" class="form-control" ng-model="data.de_project">
+            </td>
+
+
+            <td class="warning text-right">รหัสโรงเรียน : </td>
+            <td>
+              <input type="text" class="form-control" name="name" ng-model="data.de_smis">
+            </td>
+          </tr>
+
+          <tr>
+            <td class="warning text-right">S/N : </td>
+            <td>
+              <input type="text" class="form-control" name="name" ng-model="data.de_sn">
+            </td>
+          </tr>
+
+
+          <tr>
+
+            <td class="warning text-right">รุ่น : </td>
+            <td>
+              <input type="text" class="form-control" name="name" ng-model="data.de_name">
+
+            </td>       
+
+          </tr>
+            
+           <tr>  <td class="warning text-right">ประเภท : </td>
+            <td>
+              <!--<input type="datetime-local" class="form-control" name="name" ng-model="data.de_sn">   -->
+              <select name="name" ng-model="data.de_type">
+                <option value="AP">AP</option>
+                <option value="Extender">Extender</option>
+                <option value="Switch">Switch</option>
+              </select>
+            </td>
+          </tr>
+            
+            <td class="warning text-right">สถานะ : </td>
+            <td>
+              <select name="name" ng-model="data.de_stat">
+                <option value="ปกติ">ปกติ</option>
+                <option value="เสีย">เสีย</option>
+              </select>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td class="warning text-right">Note : </td>
+            <td>
+              <input type="text" class="form-control" name="name" ng-model="data.de_note">
+            </td>
+          </tr>
+
+          <tr ng-show="data.de_sn != null">
+            <td class="warning text-right">ภาพอุปกรณ์ระยะใกล้ : </td>
+            <td>
+              <a ng-href="{{'#/image_upload/de_zoom/'}}{{data.de_sn}}" class="btn btn-warning" ng-click="submitApAddForm(data)">Upload</button></a>
+            </td>
+          </tr>
+    
+      <tr ng-show="data.de_sn != null">
+            <td class="warning text-right">ภาพอุปกรณ์มุมกว้าง <br>(เห็นตำแหน่งติดตั้ง) : </td>
+            <td>
+              <a ng-href="{{'#/image_upload/de_wide/'}}{{data.de_sn}}" class="btn btn-info" ng-click="submitApAddForm(data)">Upload</button></a>
+            </td>
+          </tr>
+
+        </table>
+
+
+          
+        <br>
+        <!--     เอาไว้เลือกว่าจะให้กลับไปยังหน้า MA -->
+        <div ng-show="backto == 'ma' && data.de_sn != null">
+          <a ng-href="{{'#/ap_job/MA/'}}{{data.de_smis}}" class="btn btn-default">Back</a>
+          <a ng-href="{{'#/ap_job/MA/'}}{{data.de_smis}}">
+            <button ng-click="submitApAddForm(data)" class="btn btn-primary">Save</button>
+          </a>
+        </div>
+        <!--     เอาไว้เลือกว่าจะให้กลับไปยังหน้า Sch_View -->
+        <div ng-show="backto == 'sch'  && data.de_sn != null">
+          <a ng-href="{{'#/sch_view/'}}{{data.de_smis}}" class="btn btn-default">Back</a>
+          <a ng-href="{{'#/sch_view/'}}{{data.de_smis}}">
+            <button ng-click="submitApAddForm(data)" class="btn btn-primary">Save</button>
+          </a>
+
+        </div>
+
+        <!--     เอาไว้เลือกว่าจะให้กลับไปยังหน้า AP_list -->
+        <div ng-show="backto == 'ap_list'  && data.de_sn != null">
+          <a ng-href="{{'#/ap_listap'}}" class="btn btn-default">Back</a>
+          <a ng-href="{{'#/ap_listap'}}">
+            <button ng-click="submitApAddForm(data)" class="btn btn-primary">Save</button>
+          </a>
+           
+        </div>
+        <!--     จบส่วนเอาไว้เลือกว่าจะให้กลับไปยังหน้าไหน -->
+        
+      </div>
+    </div>
+
+
+
+    <!-- ส่วนของรูปภาพ อุปกรณ์ -->
+    <div class="panel panel-primary" id="rightcol">
+      <div class="panel-heading">รูปภาพอุปกรณ์ระยะใกล้</div>
+      <div class="panel-body">
+        <img class='img-thumbnail' height='600' width='800' data-ng-src="{{'../'}}{{data.de_pic}}">
+		
+      </div>
+    </div>
+  
+   <!-- ส่วนของรูปภาพ มุมกว้าง-->
+    <div class="panel panel-primary">
+      <div class="panel-heading">ประวัติรูปของอุปกรณ์ชิ้นนี้</div>
+      <div class="panel-body" align="middle">
+        <table>
+          <tr ng-repeat="data in img | filter:search | orderBy:predicate:reverse ">
+            <td align="center"><img class='img-thumbnail' height='600' width='800' data-ng-src="{{'../'}}{{data.img_path}}"><br>อัพโหลดเมื่อ {{data.img_date}}</td>
+			<br>
+			
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+</form>

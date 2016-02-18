@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <!--   Angular -->
+  <script src="angular/angular.min.js"></script>
+  <script src="angular/angular-resource.min.js"></script>
+  <script src="angular/angular-route.min.js"></script>
+  <script src="angular/angular-animate.js"></script>
+
+  <!--Project  Java Script -->
+  <script src="js/app.js"></script>
+  <script src="js/controller_.js"></script>
+  <script src="js/controller_ap.js"></script>
+  <script src="js/controller_eclass.js"></script>
+  <script src="js/controller_img.js"></script>
+  <script src="js/controller_job.js"></script>
+  <script src="js/controller_sch.js"></script>
+  <script src="js/controller_uso.js"></script>
+  <script src="js/display.js"></script>
+
+
+  <!-- bootstrap -->
+  <script src="bootstrap/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+  <!--   google analysis -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <title>Technic</title>
+  <style type="text/css">
+
+  </style>
+</head>
+
+<body ng-controller="appController">
+
+
+  <div class="container" ng-controller="menuCtrl as menu">
+    <div ng-controller="loadingCtrl as Load" class="alert alert-info" ng-show=Load.loading> Loading </div>
+
+    <!-- Main Menu -->
+    <div ng-show="menu.mainMenu">
+      <h2>Projects :: {{menu.HeaderText}}</h2>
+
+
+      <ul class="nav nav-tabs">
+        <!-- <li class=""><a data-toggle="tab" href="#home">All</a></li> -->
+        <li class="{{menu.jobAct}}"><a data-toggle="tab" href="#/job/">Job</a></li>
+        <li class="{{menu.eclassAct}}"><a data-toggle="tab" href="#/ecr/">e-Classroom</a></li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">Accesspoint
+                        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="{{menu.apAct}}"><a href="#/ap/">List โรงเรียน</a></li>
+            <li><a href="#/ap_listap/">List AP</a></li>
+
+          </ul>
+        </li>
+
+        <!--<li class="{{menu.apAct}}"><a data-toggle="tab" href="#/ap/">Accesspoint</a></li> ----->
+        <li class="{{menu.usoAct}}"><a data-toggle="tab" href="#uso">USO</a></li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown">เพิ่ม JOB
+                        <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li align="left" font-weight="bold"><span>โครงการ AP >></span></li>
+                <li class="{{menu.apAddAct}}"><a href="#/ap_job/MA/x">AP-MA</a></li>
+                <li><a href="#/ap_job/CM/x">AP-CM</a></li>
+
+                <li align="left"><span>โครงการ e-Class >></span></li>
+                    <li class="{{menu.apAddAct}}"><a href="#/ecr_job/MA/x">eClass-MA</a></li>
+                    <li><a href="#/ecr_job/CM/x">eClass-CM</a></li>
+                    
+                     <li align="left"><span>โครงการ USO >></span></li>
+                    <li class="{{menu.apAddAct}}"><a href="#/uso_job/MA/x">USO-MA</a></li>
+                    <li><a href="#/uso_job/CM/x">USO-CM</a></li>
+
+          </ul>
+          </li>
+
+
+      </ul>
+      <br>
+    </div>
+
+    <!-- List -->
+    <br>
+
+    <br>
+    <div ng-view></div>
+
+
+  </div>
+
+
+
+
+</body>
+
+</html>
